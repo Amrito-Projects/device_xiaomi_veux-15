@@ -61,6 +61,9 @@ function blob_fixup() {
             "${PATCHELF_0_8}" --remove-needed "libhidlbase.so" "${2}"
             sed -i "s/libhidltransport.so/libhidlbase-v32.so\x00/" "${2}"
             ;;
+        vendor/lib64/libwvhidl.so)
+	    "${PATCHELF}" --replace-needed "libcrypto.so" "libcrypto-v33.so" "${2}"
+	    ;;    
     esac
 }
 
